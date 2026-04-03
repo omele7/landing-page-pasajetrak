@@ -1,0 +1,468 @@
+g<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PasajeTrak - Controla tus gastos de pasaje</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "error": "#ffb4ab",
+              "inverse-primary": "#705d00",
+              "on-surface-variant": "#d0c6ab",
+              "surface-container-high": "#2a2a2a",
+              "on-secondary-container": "#b7b5b4",
+              "on-primary-container": "#705e00",
+              "on-tertiary-container": "#006a70",
+              "secondary": "#c8c6c5",
+              "primary": "#fff6df",
+              "tertiary-container": "#00f1ff",
+              "tertiary-fixed": "#79f5ff",
+              "surface-variant": "#353535",
+              "error-container": "#93000a",
+              "on-tertiary-fixed": "#002022",
+              "surface-container-lowest": "#0e0e0e",
+              "primary-fixed-dim": "#e9c400",
+              "inverse-on-surface": "#303030",
+              "inverse-surface": "#e2e2e2",
+              "on-tertiary": "#00363a",
+              "surface": "#131313",
+              "on-background": "#e2e2e2",
+              "on-error-container": "#ffdad6",
+              "on-secondary": "#313030",
+              "on-surface": "#e2e2e2",
+              "on-secondary-fixed": "#1c1b1b",
+              "background": "#131313",
+              "outline": "#999077",
+              "on-error": "#690005",
+              "secondary-fixed": "#e5e2e1",
+              "surface-container": "#1f1f1f",
+              "on-tertiary-fixed-variant": "#004f54",
+              "surface-container-low": "#1b1b1b",
+              "surface-tint": "#e9c400",
+              "secondary-container": "#474746",
+              "surface-container-highest": "#353535",
+              "on-primary": "#3a3000",
+              "on-primary-fixed": "#221b00",
+              "surface-bright": "#393939",
+              "secondary-fixed-dim": "#c8c6c5",
+              "primary-fixed": "#ffe16d",
+              "surface-dim": "#131313",
+              "on-secondary-fixed-variant": "#474746",
+              "tertiary-fixed-dim": "#00dbe8",
+              "primary-container": "#ffd700",
+              "outline-variant": "#4d4732",
+              "on-primary-fixed-variant": "#544600",
+              "tertiary": "#defcff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { background-color: #131313; color: #e2e2e2; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .font-plus-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-card { background: rgba(31, 31, 31, 0.6); backdrop-filter: blur(24px); border: 1px solid rgba(233, 196, 0, 0.1); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .glass-card:hover { border-color: rgba(233, 196, 0, 0.3); transform: translateY(-4px); }
+        .testimonial-card { transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; cursor: pointer; }
+        .testimonial-card:hover { transform: scale(1.01); }
+        .testimonial-card.active { transform: scale(1.04); box-shadow: 0 0 25px rgba(255,215,0,0.45); border-color: rgba(255,215,0,0.9); }
+        .testimonial-card:focus-visible { outline: 2px solid rgba(255,215,0,0.8); outline-offset: 2px; }
+        .kinetic-gradient { background: linear-gradient(135deg, #e9c400 0%, #ffd700 100%); }
+        
+        @keyframes fade-up {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .reveal { animation: fade-up 0.8s ease-out forwards; }
+
+        #mobile-menu {
+            transition: all 0.3s ease-in-out;
+            max-height: 0;
+            overflow: hidden;
+        }
+        #mobile-menu.open {
+            max-height: 400px;
+            padding-bottom: 2rem;
+        }
+
+        .feature-card,
+        .testimonial-card {
+            cursor: pointer;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(255, 215, 0, 0.12);
+        }
+
+        .feature-card:hover,
+        .testimonial-card:hover,
+        .feature-card:focus-visible,
+        .testimonial-card:focus-visible {
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 18px 40px rgba(233, 196, 0, 0.35);
+            border-color: rgba(255, 215, 0, 0.8);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .feature-card.active,
+        .testimonial-card.active {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 24px 50px rgba(255, 215, 0, 0.55);
+            border-color: #ffea7f;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .feature-card .description,
+        .testimonial-card .description {
+            max-height: 4rem;
+            overflow: hidden;
+            transition: max-height 0.25s ease;
+        }
+
+        .feature-card.active .description,
+        .testimonial-card.active .description {
+            max-height: 12rem;
+        }
+    </style>
+</head>
+<body class="selection:bg-primary-container selection:text-on-primary">
+<!-- Top Navigation Shell -->
+<nav class="fixed top-0 left-0 right-0 z-50 px-6 mt-6">
+<div class="max-w-5xl mx-auto flex items-center justify-between px-8 py-3 rounded-full bg-neutral-900/60 backdrop-blur-xl border border-white/5 shadow-2xl">
+<div class="text-2xl font-bold tracking-tighter text-yellow-400 font-plus-jakarta cursor-pointer">PasajeTrak</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-plus-jakarta text-sm font-medium tracking-tight text-neutral-300 hover:text-yellow-400 hover:underline transition-colors duration-300" href="#home">Home</a>
+<a class="font-plus-jakarta text-sm font-medium tracking-tight text-neutral-300 hover:text-yellow-400 hover:underline transition-colors duration-300" href="#features">Features</a>
+<a class="font-plus-jakarta text-sm font-medium tracking-tight text-neutral-300 hover:text-yellow-400 hover:underline transition-colors duration-300" href="#benefits">Benefits</a>
+<a class="font-plus-jakarta text-sm font-medium tracking-tight text-neutral-300 hover:text-yellow-400 hover:underline transition-colors duration-300" href="#testimonials">Testimonials</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden sm:block bg-primary-container text-on-primary px-6 py-2 rounded-full font-plus-jakarta text-sm font-bold active:scale-95 transition-transform shadow-[0_0_15px_rgba(255,215,0,0.2)]">
+                Download
+            </button>
+<button class="md:hidden text-white p-1" id="menu-toggle">
+<span class="material-symbols-outlined text-3xl">menu</span>
+</button>
+</div>
+</div>
+<!-- Mobile Menu -->
+<div class="md:hidden bg-neutral-950/95 backdrop-blur-2xl rounded-3xl mt-4 border border-white/5 mx-auto max-w-sm px-8" id="mobile-menu">
+<div class="flex flex-col gap-6 pt-8 pb-4">
+<a class="font-plus-jakarta text-lg font-medium text-neutral-300 hover:text-yellow-400 hover:underline transition-colors duration-300" href="#home">Home</a>
+<a class="font-plus-jakarta text-lg font-medium text-neutral-300 hover:text-yellow-400 hover:underline transition-colors duration-300" href="#features">Features</a>
+<a class="font-plus-jakarta text-lg font-medium text-neutral-300 hover:text-yellow-400 hover:underline transition-colors duration-300" href="#benefits">Benefits</a>
+<a class="font-plus-jakarta text-lg font-medium text-neutral-300 hover:text-yellow-400 hover:underline transition-colors duration-300" href="#testimonials">Testimonials</a>
+<button class="w-full bg-primary-container text-on-primary py-4 rounded-2xl font-bold">Download Now</button>
+</div>
+</div>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-screen flex flex-col items-center justify-center pt-40 pb-20 px-6 overflow-hidden bg-surface" id="home">
+<div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary-container/5 blur-[120px] rounded-full"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-primary-container/10 blur-[100px] rounded-full"></div>
+<div class="max-w-4xl text-center z-10 reveal">
+<span class="label-md uppercase tracking-[0.2em] text-primary-fixed-dim font-semibold mb-6 block">Transit Optimization</span>
+<h1 class="text-5xl md:text-7xl lg:text-8xl font-plus-jakarta font-extrabold text-on-surface tracking-tighter leading-[0.95] mb-8">
+                    Controla tus gastos de <span class="text-transparent bg-clip-text kinetic-gradient">pasaje</span> en segundos
+                </h1>
+<p class="text-lg md:text-xl text-secondary max-w-2xl mx-auto mb-10 leading-relaxed font-body">
+                    Registra cada viaje y visualiza tus estadísticas diarias de transporte público de forma fácil. La precisión financiera en la palma de tu mano.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+<button class="bg-primary-container text-on-primary px-10 py-5 rounded-full font-plus-jakarta font-bold text-lg flex items-center gap-2 group hover:shadow-[0_0_30px_rgba(255,215,0,0.4)] transition-all">
+                        Empieza ahora
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<a href="#features" class="bg-surface-container-highest text-on-surface px-10 py-5 rounded-full font-plus-jakarta font-bold text-lg hover:bg-surface-variant transition-colors border border-outline-variant/20 inline-block text-center">
+                        Ver funciones
+                    </a>
+</div>
+</div>
+<!-- Main Hero Asset -->
+<div class="mt-20 relative w-full max-w-6xl mx-auto reveal" style="animation-delay: 0.2s">
+<div class="relative rounded-2xl overflow-hidden glass-card group">
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-700"></div>
+<img alt="Commuter using app" class="w-full h-[600px] object-cover scale-105 group-hover:scale-100 transition-transform duration-1000" data-alt="High-quality photo of a young professional using a sleek smartphone app while waiting for a high-tech metro, soft bokeh of city lights in background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQMV7MW36FAw7vfhO9QS9iZtu5tT93aOobWgFYZFpMc-360ykFpjlsSpxq7uNIZcpSiPVkbEVzM3LdRC69zPtWPuglAY2OmJ-DOoMyVesfoTeGSdVoTLWKvs8bX_VoCmPJrb7HAtUC-haj4QO3qiIPQwmyLOT8vfWuaVs8orsEIixfcD5TBAzSnlMhI0KUydFr0hQ_YjLK-eK_CLQH-FFMgosQuBgB20o9MMkk9YWre8LxgMa8AaznjvV3g--PofgkTeDdqH75eFie"/>
+<!-- Floating App Overlay -->
+<div class="absolute inset-y-0 right-0 w-1/2 flex items-center justify-center p-8">
+<div class="w-64 md:w-80 h-[500px] bg-black rounded-[3rem] border-[8px] border-neutral-800 shadow-2xl overflow-hidden relative rotate-6 group-hover:rotate-0 transition-transform duration-700">
+<img alt="App Interface" class="w-full h-full object-cover" data-alt="Fintech mobile app interface showing a glowing yellow bar chart and list of recent metro transactions on a deep black background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2b_PTUZe9r_b955E4nY3CPFwuAu61g2b5bFtjZ9zKMdCt_Uzg63dEtE4uWeTgf4bIH28BKzswaK5u-kkJbADK0xMKNx0UMBog_jEiJVb2pKFRCwLTv4AP7dHxZRf3gTjKw-StP5lvkwTVytwPBmSHhZzIHpGH8BIlc0MMHX31Azt6Ni_mx0oRI2NLWxZzzp0jOMSQO0Xy6IcgKKB0rKmu1-LR2UTvNuwgRS2gsbH-Gr7loNIEYbSTy0iyMl6pKlQ82MhFXPsAhjBq"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="py-32 bg-surface-container-low px-6">
+<div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+<div class="order-2 md:order-1 relative group reveal">
+<div class="absolute -inset-4 bg-primary-container/10 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+<img alt="Commuters in motion" class="relative rounded-2xl shadow-2xl grayscale group-hover:grayscale-0 transition-all duration-700 w-full h-[500px] object-cover" data-alt="Cinematic long exposure of commuters moving through a modern architectural bus station, yellow accents from lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8RAmgAXlhNvOQ3rLM1ec2S-5AAo7qxi1qo6gHuMo6ibPgLE5Y11exAH9uTT20NohL91vxgvAPD88TTxIc_gisiR7Mb94QsZbH4OywKEc1PyKz1k1I71fuQnc-Doo71ptxW7iWWKjPfzRilKmdFHy-mMNgt8WXYKKzI7rFDu5PPrHG6gecU8HMGqQbwCJwitQ1zoCQC74vyHWpt8U4x-RTBk1aWR6iBb_28qBopHt_vbWntHiysvLB_K-wXY2CymyxWLZXttAhMdHb"/>
+</div>
+<div class="order-1 md:order-2 space-y-8 reveal" style="animation-delay: 0.1s">
+<h2 class="text-4xl md:text-5xl font-plus-jakarta font-bold tracking-tight text-on-surface">Tu compañero de ruta diario.</h2>
+<p class="text-secondary text-lg leading-relaxed">
+                        PasajeTrak nace de la necesidad de entender a dónde se va nuestro dinero cada vez que subimos a un bus, metro o taxi. Diseñada específicamente para quienes se desplazan por la ciudad, nuestra plataforma ofrece una forma ultra-rápida de registrar gastos sin complicaciones.
+                    </p>
+<div class="flex items-center gap-4 text-primary-fixed bg-surface-container-high w-fit px-6 py-3 rounded-full border border-primary-container/10">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">security</span>
+<span class="font-plus-jakarta font-semibold uppercase tracking-wider text-xs">Precisión Garantizada</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Bento Grid -->
+<section class="py-32 bg-surface px-6" id="features">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-20">
+<h2 class="text-4xl md:text-6xl font-plus-jakarta font-extrabold tracking-tighter mb-4">Funciones de Alto Rendimiento</h2>
+<div class="h-1 w-24 bg-primary-container mx-auto rounded-full"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[600px]">
+<!-- Feature 1: Quick Log -->
+<div class="feature-card md:col-span-7 glass-card rounded-lg p-10 flex flex-col justify-between group" tabindex="0" onclick="this.classList.toggle('active')" onkeydown="if(event.key==='Enter'||event.key===' ') { event.preventDefault(); this.classList.toggle('active'); }">
+<div class="max-w-md">
+<span class="material-symbols-outlined text-primary-container text-4xl mb-6">bolt</span>
+<h3 class="text-3xl font-plus-jakarta font-bold mb-4">Registro rápido</h3>
+<p class="description text-secondary">Un solo toque es todo lo que necesitas para registrar tu pasaje. Sin formularios infinitos, solo velocidad pura.</p>
+</div>
+<div class="mt-8 overflow-hidden rounded-lg h-32">
+<img alt="Quick Input" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Abstract close-up of a digital smartphone screen with minimalist data input fields and vibrant yellow glow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBplxySYzBS_a5cSnlBtU_XqRJGuKKTC2ldoHSbwcQAyLeHms8dJ3AVbBbQuq50EhzC3NSBvI4Wpuos1DFOGNITXE3YAJzfSaV39wmjNzv0W3yjmGk7nPsQdnp__qk0tq_FS5RkOmcjv3pUPL8Nz9DEeIL_5ae7kGiPjKE_APBsPbKDFKNg1ba-hScPtmw_uJDzvKFNqtiBM5HfOX1_VoN0qbpu9roiUUC8JnGdR8E9xkLAtxLDPm5oPVPtEZ-rXk9FBMXMY-8eBOKj"/>
+</div>
+</div>
+<!-- Feature 2: History -->
+<div class="feature-card md:col-span-5 bg-surface-container-high rounded-lg p-10 flex flex-col justify-center border border-outline-variant/10" tabindex="0" role="button" onclick="this.classList.toggle('active')" onkeydown="if(event.key==='Enter'||event.key===' ') { event.preventDefault(); this.classList.toggle('active'); }">
+<span class="material-symbols-outlined text-primary-container text-4xl mb-6">history</span>
+<h3 class="text-2xl font-plus-jakarta font-bold mb-4">Historial detallado</h3>
+<p class="description text-secondary text-sm">Explora tus viajes pasados con filtros inteligentes por fecha, tipo de transporte o costo.</p>
+</div>
+<!-- Feature 3: Stats -->
+<div class="feature-card md:col-span-5 bg-surface-container-highest rounded-lg p-10 flex flex-col justify-center border border-outline-variant/10" tabindex="0" role="button" onclick="this.classList.toggle('active')" onkeydown="if(event.key==='Enter'||event.key===' ') { event.preventDefault(); this.classList.toggle('active'); }">
+<span class="material-symbols-outlined text-primary-container text-4xl mb-6">leaderboard</span>
+<h3 class="text-2xl font-plus-jakarta font-bold mb-4">Estadísticas inteligentes</h3>
+<p class="description text-secondary text-sm">Visualiza patrones de consumo y descubre cuánto podrías ahorrar ajustando tus rutas.</p>
+</div>
+<!-- Feature 4: UI -->
+<div class="feature-card md:col-span-7 glass-card rounded-lg p-10 flex items-center gap-8 border border-outline-variant/10 group" tabindex="0" role="button" onclick="this.classList.toggle('active')" onkeydown="if(event.key==='Enter'||event.key===' ') { event.preventDefault(); this.classList.toggle('active'); }">
+<div class="flex-1">
+<span class="material-symbols-outlined text-primary-container text-4xl mb-6">auto_awesome</span>
+<h3 class="text-3xl font-plus-jakarta font-bold mb-4">Interfaz amigable</h3>
+<p class="description text-secondary">Diseño editorial limpio que elimina el ruido visual para que te enfoques en lo que importa: tus ahorros.</p>
+</div>
+<div class="hidden sm:block w-32 h-32 bg-primary-container/20 rounded-full blur-2xl group-hover:bg-primary-container/40 transition-colors"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- App Mockups / Visual Highlights -->
+<section class="py-32 bg-surface-container-lowest px-6 overflow-hidden">
+<div class="max-w-7xl mx-auto">
+<div class="grid lg:grid-cols-2 gap-20 items-center">
+<div class="space-y-12">
+<div class="space-y-4">
+<h2 class="text-4xl md:text-5xl font-plus-jakarta font-bold text-on-surface">Análisis en Tiempo Real</h2>
+<p class="text-secondary text-lg">Tu dinero, visualizado. Entiende tus hábitos de transporte a través de datos accionables y gráficos de alta gama.</p>
+</div>
+<div class="space-y-8">
+<div class="flex gap-6 items-start">
+<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary-container">pie_chart</span>
+</div>
+<div>
+<h4 class="text-xl font-bold mb-2">Distribución de Gastos</h4>
+<p class="text-neutral-400">¿Bus, Metro o Taxi? Observa cómo se divide tu presupuesto mensual de forma automática.</p>
+</div>
+</div>
+<div class="flex gap-6 items-start">
+<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary-container">show_chart</span>
+</div>
+<div>
+<h4 class="text-xl font-bold mb-2">Tendencias Mensuales</h4>
+<p class="text-neutral-400">Compara tu gasto actual con meses anteriores y mantén tu presupuesto bajo control.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="relative reveal" style="animation-delay: 0.2s">
+<div class="absolute inset-0 bg-primary-container/5 blur-[150px] rounded-full"></div>
+<div class="relative grid grid-cols-2 gap-8 items-center">
+<div class="translate-y-16 glass-card p-4 rounded-3xl shadow-2xl">
+<img alt="Stats Screen" class="rounded-2xl w-full" data-alt="High fidelity data visualization dashboard on a tablet showing complex transport cost analysis with yellow and white graphics" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCe9EnolpmwNmtmO9rmG5Rx09nXXc_5V9Hxfl0upn5hxvfpVak61hkFWD2fzJBJ-sZr22TQQSg20CIFoA6Ybmbw3182E_t4tqrVuDeV0Huse52ScKU7hvIVrbLPevfYCgWp41TBUpBggXHZxMevREpUDaoEhK_4jv_LznkJO5YC2pZUVQ4pTgX3yYgWGBKvNvJGSNta1NLPkfdTYZTK8QzXnrxyo16KLeheJy8Ghm2ftSDBqEPKvyTb7xRkRS6VglAtGzKI22k2eWh1"/>
+<p class="mt-6 text-center font-bold text-sm uppercase tracking-[0.2em] text-primary-fixed">Analytics Pro</p>
+</div>
+<div class="glass-card p-4 rounded-3xl shadow-2xl">
+<img alt="Daily Total Screen" class="rounded-2xl w-full" data-alt="Detailed mobile app view showing daily transport totals with large yellow typography and glowing interface elements" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbH0yr6izZXEPF8CtTvWlG8IJMCdRlvTctrqx1lrmyJ4OMOAAx1-s8qP8mXKOy81jhPdcKcI0-4iYrJVE6CA7eAtRzCBI5XCERDeKEGWETlT07mH8Uuehtr9RhHCJqp1XNtWAAg0y8y_PlGVtfyqRgu33PjGWuwk_4Ru9UPuO7dz6WlMOJ3m5bu8JuT2cYeVUGBznAqOxJ2iYo638bXblSmz3lnT964E0YLvX58PzUu4ytrv0P-TyqxWCCO7w37BfImo0u0KBgwmIC"/>
+<p class="mt-6 text-center font-bold text-sm uppercase tracking-[0.2em] text-primary-fixed">Smart View</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Benefits -->
+<section class="py-32 bg-surface px-6" id="benefits">
+<div class="max-w-5xl mx-auto text-center">
+<h2 class="text-4xl md:text-5xl font-plus-jakarta font-extrabold mb-16 reveal">¿Por qué usar PasajeTrak?</h2>
+<div class="grid md:grid-cols-3 gap-12">
+<div class="space-y-6 reveal" style="animation-delay: 0.1s">
+<div class="text-primary-container text-6xl font-black opacity-20">01</div>
+<h3 class="text-2xl font-bold">Ahorro Inteligente</h3>
+<p class="text-secondary">Al visualizar lo que gastas, es más fácil identificar rutas más económicas y ahorrar hasta un 20% mensual.</p>
+</div>
+<div class="space-y-6 reveal" style="animation-delay: 0.2s">
+<div class="text-primary-container text-6xl font-black opacity-20">02</div>
+<h3 class="text-2xl font-bold">Control Total</h3>
+<p class="text-secondary">Deja de preguntarte en qué gastaste el efectivo. Cada moneda queda registrada en tu bóveda digital.</p>
+</div>
+<div class="space-y-6 reveal" style="animation-delay: 0.3s">
+<div class="text-primary-container text-6xl font-black opacity-20">03</div>
+<h3 class="text-2xl font-bold">Simplicidad</h3>
+<p class="text-secondary">Diseñado para ser usado mientras caminas o esperas el bus. UX optimizada para una sola mano.</p>
+</div>
+</div>
+<div class="mt-24 p-10 rounded-3xl bg-surface-container-high border border-primary-container/10 inline-block reveal">
+<div class="flex flex-col md:flex-row items-center gap-8">
+<span class="material-symbols-outlined text-5xl text-primary-container">ads_click</span>
+<p class="text-xl font-medium text-left max-w-lg">
+<span class="text-primary-container font-bold">100% Gratis.</span> PasajeTrak es gratuito para todos. Incluimos anuncios mínimos y no intrusivos para mantener los servidores funcionando.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-32 bg-surface-container-lowest px-6 overflow-hidden" id="testimonials">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6 reveal">
+<h2 class="text-4xl md:text-6xl font-plus-jakarta font-bold max-w-xl">Lo que dicen nuestros usuarios</h2>
+<div class="text-primary-container flex gap-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Testimonial 1 -->
+<div class="testimonial-card glass-card p-10 rounded-3xl flex flex-col justify-between reveal" tabindex="0">
+<p class="text-lg italic text-on-surface mb-8 leading-relaxed">"Como estudiante, cada peso cuenta. PasajeTrak me ayudó a darme cuenta que gastaba demasiado en taxis tarde en la noche. Ahora planifico mejor mis rutas."</p>
+<div class="flex items-center gap-4">
+<img alt="Andrés" class="w-14 h-14 rounded-full object-cover border-2 border-primary-container/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpP3wwGgyl0Bq_bXqBzgrWSE2BWAMIiWh9B48xhSyZM7V61s7VLQ7DAjyS0hJ5VY5tO3lHmx1gaUEtZ-vMIDXKijLNq7L0bfsM_Z2CRVLh1bJqkXDsNWh2QEg8XYHJ9u_8mfzHJuuO65tSu3nJSCP6ID9vTKRAvKdlOREATNIc01vTyhrJOwjJmgr7rNHABi5QMN2atxsUKugP--3HYI6UT8ztj_uawRm_gnKKYw0kXn36w2nD2XK9Y6FzHgpHT027WDSa-zfI1Xev"/>
+<div>
+<h4 class="font-bold">Andrés Rivera</h4>
+<p class="text-xs text-secondary uppercase tracking-widest">Estudiante de Ingeniería</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="testimonial-card bg-surface-container-high p-10 rounded-3xl flex flex-col justify-between border border-outline-variant/5 reveal" style="animation-delay: 0.1s" tabindex="0">
+<p class="text-lg italic text-on-surface mb-8 leading-relaxed">"La interfaz es simplemente hermosa. Me encanta ver el gráfico al final de la semana y ver cómo mi presupuesto se mantiene bajo control."</p>
+<div class="flex items-center gap-4">
+<img alt="Carla" class="w-14 h-14 rounded-full object-cover border-2 border-primary-container/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeiw8hE6W5gCZBOiNm6jmgggFI758ZbeYNafnvdzfWP7fAIdmDjKhd3yXvthaHPkRLDSMMI9Qu7pu7Cx-jY--b2r9da2b0dH1036t9_FuyGXVcyRm57Ne0g1e0DlsElSPpIvIxEd_PPNo62o3RAEIM766oBSuqStTPZsnKSgVkE0c8viDbIySvP6XyyB_ZlSp7OQjobkup71acRV-NcB_fjQyN5SSlSnxuoxAvGyNYUmlDCp2CRDlgslMbBV922RYLjEij2IPFC31T"/>
+<div>
+<h4 class="font-bold">Carla Montes</h4>
+<p class="text-xs text-secondary uppercase tracking-widest">Diseñadora Gráfica</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="testimonial-card glass-card p-10 rounded-3xl flex flex-col justify-between reveal" style="animation-delay: 0.2s" tabindex="0">
+<p class="text-lg italic text-on-surface mb-8 leading-relaxed">"Súper fácil de usar. Literalmente registro mi pasaje mientras paso la tarjeta por el lector. No quita nada de tiempo."</p>
+<div class="flex items-center gap-4">
+<img alt="Marco" class="w-14 h-14 rounded-full object-cover border-2 border-primary-container/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzTrx1rJmHEnimAmj5wXom9MOpZt03LONKWeq5izd-I5w3UbfeRTq1AZ8HDoB-mZsJsX5oCDwoZVThHUWZK9eZzrQawCAUOk0RgDqA2DgFjNaNgqarlp76RfKcxHQuiptJIBfGdbLAA8lO2i44YhUfEEnSfj77ita5K4EVXFroCD38HsQsbNfa-1E1qwKmMwZ84TcIaS3XhNr7JE22U58Yv2c_hWfPyg9zZ7BPCO_q9HBTXyI6a42zTS5PdtMmWmlZDI7Fje_VjFrW"/>
+<div>
+<h4 class="font-bold">Marco Polo</h4>
+<p class="text-xs text-secondary uppercase tracking-widest">Analista de Datos</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-32 px-6">
+<div class="max-w-6xl mx-auto kinetic-gradient rounded-[3rem] p-16 md:p-24 text-center relative overflow-hidden shadow-[0_40px_100px_rgba(255,215,0,0.2)] group reveal">
+<div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+<div class="absolute top-0 right-0 w-96 h-96 bg-white/20 blur-[120px] rounded-full translate-x-1/2 -translate-y-1/2"></div>
+<div class="relative z-10">
+<h2 class="text-4xl md:text-7xl font-plus-jakarta font-extrabold text-on-primary mb-8 tracking-tighter">¿Listo para tomar el control?</h2>
+<p class="text-on-primary/80 text-xl max-w-2xl mx-auto mb-12 font-medium">Únete a miles de personas que ya optimizan sus gastos de transporte diario con PasajeTrak.</p>
+<div class="flex flex-wrap justify-center gap-6">
+<button class="bg-on-primary text-primary-container px-12 py-6 rounded-full font-bold text-xl hover:scale-105 transition-transform flex items-center gap-3 shadow-2xl">
+<span class="material-symbols-outlined text-2xl">download</span>
+                            Descarga PasajeTrak ahora
+                        </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-neutral-950 pt-24 pb-12">
+<div class="w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center px-8">
+<div class="mb-12 md:mb-0 text-center md:text-left">
+<div class="text-2xl font-black text-neutral-100 font-plus-jakarta">PasajeTrak</div>
+<p class="text-neutral-500 text-xs uppercase tracking-[0.3em] mt-2">Kinetic Vault Precision.</p>
+</div>
+<div class="flex gap-12 mb-12 md:mb-0">
+<a class="font-plus-jakarta text-xs uppercase tracking-widest text-neutral-500 hover:text-yellow-400 transition-colors" href="#">Privacy</a>
+<a class="font-plus-jakarta text-xs uppercase tracking-widest text-neutral-500 hover:text-yellow-400 transition-colors" href="#">Terms</a>
+<a class="font-plus-jakarta text-xs uppercase tracking-widest text-neutral-500 hover:text-yellow-400 transition-colors" href="#">Contact</a>
+</div>
+<div class="font-plus-jakarta text-[10px] uppercase tracking-widest text-neutral-600">
+                © 2026 PasajeTrak.
+            </div>
+</div>
+</footer>
+<script>
+    // Mobile Menu Logic
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open');
+        const icon = menuToggle.querySelector('.material-symbols-outlined');
+        icon.textContent = mobileMenu.classList.contains('open') ? 'close' : 'menu';
+    });
+
+    // Close menu on link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            menuToggle.querySelector('.material-symbols-outlined').textContent = 'menu';
+        });
+    });
+
+    // Simple reveal animation on scroll
+    const observerOptions = {
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('reveal');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body></html>
