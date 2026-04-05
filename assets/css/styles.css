@@ -1,0 +1,114 @@
+body {
+  background-color: #131313;
+  color: #e2e2e2;
+  font-family: "Inter", sans-serif;
+  scroll-behavior: smooth;
+}
+.font-plus-jakarta {
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+.material-symbols-outlined {
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+}
+.glass-card {
+  background: rgba(31, 31, 31, 0.6);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(233, 196, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glass-card:hover {
+  border-color: rgba(233, 196, 0, 0.3);
+  transform: translateY(-4px);
+}
+.testimonial-card {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+  cursor: pointer;
+}
+.testimonial-card:hover {
+  transform: scale(1.01);
+}
+.testimonial-card.active {
+  transform: scale(1.04);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.45);
+  border-color: rgba(255, 215, 0, 0.9);
+}
+.testimonial-card:focus-visible {
+  outline: 2px solid rgba(255, 215, 0, 0.8);
+  outline-offset: 2px;
+}
+.kinetic-gradient {
+  background: linear-gradient(135deg, #e9c400 0%, #ffd700 100%);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.reveal {
+  animation: fade-up 0.8s ease-out forwards;
+}
+
+#mobile-menu {
+  transition: all 0.3s ease-in-out;
+  max-height: 0;
+  overflow: hidden;
+}
+#mobile-menu.open {
+  max-height: 400px;
+  padding-bottom: 2rem;
+}
+
+.feature-card,
+.testimonial-card {
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease,
+    background-color 0.25s ease;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 215, 0, 0.12);
+}
+
+.feature-card:hover,
+.testimonial-card:hover,
+.feature-card:focus-visible,
+.testimonial-card:focus-visible {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 18px 40px rgba(233, 196, 0, 0.35);
+  border-color: rgba(255, 215, 0, 0.8);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.feature-card.active,
+.testimonial-card.active {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 24px 50px rgba(255, 215, 0, 0.55);
+  border-color: #ffea7f;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.feature-card .description,
+.testimonial-card .description {
+  max-height: 4rem;
+  overflow: hidden;
+  transition: max-height 0.25s ease;
+}
+
+.feature-card.active .description,
+.testimonial-card.active .description {
+  max-height: 12rem;
+}
