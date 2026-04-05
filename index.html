@@ -69,39 +69,6 @@
           </button>
         </div>
       </div>
-      <!-- Menu movil -->
-      <div
-        class="md:hidden bg-neutral-950/95 backdrop-blur-2xl rounded-3xl mt-4 border border-white/5 mx-auto max-w-sm px-8"
-        id="mobile-menu"
-      >
-        <div class="flex flex-col gap-6 pt-8 pb-4">
-          <a
-            class="font-plus-jakarta text-lg font-medium text-neutral-300 hover:text-yellow-400 hover:underline transition-colors duration-300"
-            href="#home"
-            >Inicio</a
-          >
-          <a
-            class="font-plus-jakarta text-lg font-medium text-neutral-300 hover:text-yellow-400 hover:underline transition-colors duration-300"
-            href="#features"
-            >Funciones</a
-          >
-          <a
-            class="font-plus-jakarta text-lg font-medium text-neutral-300 hover:text-yellow-400 hover:underline transition-colors duration-300"
-            href="#benefits"
-            >Beneficios</a
-          >
-          <a
-            class="font-plus-jakarta text-lg font-medium text-neutral-300 hover:text-yellow-400 hover:underline transition-colors duration-300"
-            href="#testimonials"
-            >Testimonios</a
-          >
-          <button
-            class="w-full bg-primary-container text-on-primary py-4 rounded-2xl font-bold"
-          >
-            Descargar ahora
-          </button>
-        </div>
-      </div>
     </nav>
     <main>
       <!-- Seccion principal -->
@@ -109,6 +76,8 @@
         class="relative min-h-screen flex flex-col items-center justify-center pt-40 pb-20 px-6 overflow-hidden bg-surface"
         id="home"
       >
+        <div class="carfondo absolute inset-0 pointer-events-none z-0"></div>
+        <div class="carfondo-image absolute inset-0 pointer-events-none z-0"></div>
         <div
           class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary-container/5 blur-[120px] rounded-full"
         ></div>
@@ -158,50 +127,61 @@
         </div>
         <!-- Recurso visual principal -->
         <div
-          class="mt-20 relative w-full max-w-6xl mx-auto reveal"
+          class="mt-20 relative w-full max-w-7xl mx-auto reveal"
           style="animation-delay: 0.2s"
         >
-          <div class="relative rounded-2xl overflow-hidden glass-card group">
-            <div
-              class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-700"
-            ></div>
-            <img
-              alt="Persona usuaria utilizando la app"
-              class="w-full h-[600px] object-cover scale-105 group-hover:scale-100 transition-transform duration-1000"
-              data-alt="Fotografia de alta calidad de una joven profesional usando una app en su smartphone mientras espera un metro moderno, con luces urbanas desenfocadas al fondo"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQMV7MW36FAw7vfhO9QS9iZtu5tT93aOobWgFYZFpMc-360ykFpjlsSpxq7uNIZcpSiPVkbEVzM3LdRC69zPtWPuglAY2OmJ-DOoMyVesfoTeGSdVoTLWKvs8bX_VoCmPJrb7HAtUC-haj4QO3qiIPQwmyLOT8vfWuaVs8orsEIixfcD5TBAzSnlMhI0KUydFr0hQ_YjLK-eK_CLQH-FFMgosQuBgB20o9MMkk9YWre8LxgMa8AaznjvV3g--PofgkTeDdqH75eFie"
-            />
-            <!-- Superposicion flotante de la app -->
-            <div
-              class="absolute inset-y-0 right-0 w-1/2 flex items-center justify-center p-8"
-            >
-              <div
-                class="w-64 md:w-80 h-[500px] bg-black rounded-[3rem] border-[8px] border-neutral-800 shadow-2xl overflow-hidden relative rotate-6 group-hover:rotate-0 transition-transform duration-700"
-              >
-                <img
-                  alt="Interfaz de la aplicacion"
-                  class="w-full h-full object-cover"
-                  data-alt="Interfaz de app financiera mostrando un grafico de barras amarillo brillante y una lista de transacciones recientes del metro sobre un fondo negro profundo"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2b_PTUZe9r_b955E4nY3CPFwuAu61g2b5bFtjZ9zKMdCt_Uzg63dEtE4uWeTgf4bIH28BKzswaK5u-kkJbADK0xMKNx0UMBog_jEiJVb2pKFRCwLTv4AP7dHxZRf3gTjKw-StP5lvkwTVytwPBmSHhZzIHpGH8BIlc0MMHX31Azt6Ni_mx0oRI2NLWxZzzp0jOMSQO0Xy6IcgKKB0rKmu1-LR2UTvNuwgRS2gsbH-Gr7loNIEYbSTy0iyMl6pKlQ82MhFXPsAhjBq"
-                />
+          <div class="relative rounded-[4rem] overflow-hidden bg-black/55 border border-white/10 shadow-2xl min-h-[680px] flex items-center">
+            <div class="absolute inset-0 bg-black/30"></div>
+            <div class="absolute inset-0 flex justify-center items-center pointer-events-none">
+              <div class="mockup-glow"></div>
+            </div>
+            <div class="relative z-10 w-full grid lg:grid-cols-2 gap-12 items-center px-8 lg:px-16 py-16">
+              <div class="space-y-8 text-left">
+                <div class="inline-flex items-center gap-3 text-primary-fixed bg-white/5 backdrop-blur-md px-5 py-3 rounded-full border border-primary-container/20">
+                  <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shield</span>
+                  <span class="font-plus-jakarta font-semibold uppercase tracking-widest text-xs">Precisión garantizada</span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-plus-jakarta font-bold tracking-tight text-white">Tu compañero de ruta diario.</h2>
+                <p class="text-neutral-300 text-lg leading-relaxed">
+                  PasajeTrak nace de la necesidad de entender a dónde se va nuestro dinero cada vez que subimos a un bus, metro o taxi. Diseñada específicamente para quienes se desplazan por la ciudad, nuestra plataforma ofrece una forma ultra-rápida de registrar gastos sin complicaciones.
+                </p>
+              </div>
+              <div class="relative flex justify-center items-center h-[560px]">
+                <div class="absolute inset-0 flex justify-center items-center pointer-events-none">
+                  <div class="mockup-background"></div>
+                </div>
+                <div class="relative w-full max-w-[320px] hero-drift">
+                  <div class="absolute top-0 right-0 w-[260px] h-[520px] device-mockup floating-device floating-device-1 float" style="opacity: 0.78;">
+                    <div class="device-screen">
+                      <img alt="Pantalla historial" class="w-full h-full object-contain fade-in" src="assets/img/home.png" />
+                    </div>
+                  </div>
+                  <div class="relative device-mockup floating-device floating-device-2 float-slow">
+                    <div class="device-screen">
+                      <img alt="Pantalla nuevo pasaje" class="w-full h-full object-contain fade-in" src="assets/img/edita.png" />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
       <!-- Seccion acerca de -->
-      <section class="py-32 bg-surface-container-low px-6">
+      <section class="py-32 bg-surface px-6">
         <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
           <div class="order-2 md:order-1 relative group reveal">
             <div
               class="absolute -inset-4 bg-primary-container/10 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700"
             ></div>
-            <img
-              alt="Pasajeros en movimiento"
-              class="relative rounded-2xl shadow-2xl grayscale group-hover:grayscale-0 transition-all duration-700 w-full h-[500px] object-cover"
-              data-alt="Toma cinematografica de larga exposicion de pasajeros en una estacion de buses de arquitectura moderna, con acentos amarillos en las luces"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8RAmgAXlhNvOQ3rLM1ec2S-5AAo7qxi1qo6gHuMo6ibPgLE5Y11exAH9uTT20NohL91vxgvAPD88TTxIc_gisiR7Mb94QsZbH4OywKEc1PyKz1k1I71fuQnc-Doo71ptxW7iWWKjPfzRilKmdFHy-mMNgt8WXYKKzI7rFDu5PPrHG6gecU8HMGqQbwCJwitQ1zoCQC74vyHWpt8U4x-RTBk1aWR6iBb_28qBopHt_vbWntHiysvLB_K-wXY2CymyxWLZXttAhMdHb"
-            />
+            <div class="image-frame relative mx-auto overflow-hidden rounded-[2rem] border border-white/15 bg-white/5 shadow-[0_30px_80px_rgba(0,0,0,0.22)] transition-all duration-500 group-hover:-translate-y-1">
+              <img
+                alt="Pasajeros en movimiento"
+                class="relative rounded-[1.75rem] w-full h-[500px] object-contain transition-all duration-500 float-slow fade-in"
+                data-alt="Toma cinematografica de larga exposicion de pasajeros en una estacion de buses de arquitectura moderna, con acentos amarillos en las luces"
+                src="assets/img/pasajetrakinicio.png"
+              />
+            </div>
           </div>
           <div
             class="order-1 md:order-2 space-y-8 reveal"
@@ -236,8 +216,9 @@
         </div>
       </section>
       <!-- Cuadricula de funciones -->
-      <section class="py-32 bg-surface px-6" id="features">
-        <div class="max-w-7xl mx-auto">
+      <section class="relative py-32 bg-surface px-6 overflow-hidden" id="features">
+        <div class="carfondo absolute inset-0 pointer-events-none"></div>
+        <div class="relative max-w-7xl mx-auto">
           <div class="text-center mb-20">
             <h2
               class="text-4xl md:text-6xl font-plus-jakarta font-extrabold tracking-tighter mb-4"
@@ -253,15 +234,9 @@
           >
             <!-- Funcion 1: Registro rapido -->
             <div
-              class="feature-card md:col-span-7 glass-card rounded-lg p-10 flex flex-col justify-between group"
+              class="feature-card md:col-span-7 glass-card rounded-lg p-10 flex flex-col justify-between group reveal fade-in"
               tabindex="0"
-              onclick="this.classList.toggle('active')"
-              onkeydown="
-                if (event.key === 'Enter' || event.key === ' ') {
-                  event.preventDefault();
-                  this.classList.toggle('active');
-                }
-              "
+              role="button"
             >
               <div class="max-w-md">
                 <span
@@ -276,27 +251,12 @@
                   pasaje. Sin formularios infinitos, solo velocidad pura.
                 </p>
               </div>
-              <div class="mt-8 overflow-hidden rounded-lg h-32">
-                <img
-                  alt="Ingreso rapido"
-                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  data-alt="Primer plano abstracto de una pantalla de smartphone con campos de ingreso minimalistas y un brillo amarillo vibrante"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBplxySYzBS_a5cSnlBtU_XqRJGuKKTC2ldoHSbwcQAyLeHms8dJ3AVbBbQuq50EhzC3NSBvI4Wpuos1DFOGNITXE3YAJzfSaV39wmjNzv0W3yjmGk7nPsQdnp__qk0tq_FS5RkOmcjv3pUPL8Nz9DEeIL_5ae7kGiPjKE_APBsPbKDFKNg1ba-hScPtmw_uJDzvKFNqtiBM5HfOX1_VoN0qbpu9roiUUC8JnGdR8E9xkLAtxLDPm5oPVPtEZ-rXk9FBMXMY-8eBOKj"
-                />
-              </div>
             </div>
             <!-- Funcion 2: Historial -->
             <div
-              class="feature-card md:col-span-5 bg-surface-container-high rounded-lg p-10 flex flex-col justify-center border border-outline-variant/10"
+              class="feature-card glass-card md:col-span-5 rounded-lg p-10 flex flex-col justify-between self-start min-h-[320px] border border-outline-variant/10 reveal fade-in fade-in-delay-1"
               tabindex="0"
               role="button"
-              onclick="this.classList.toggle('active')"
-              onkeydown="
-                if (event.key === 'Enter' || event.key === ' ') {
-                  event.preventDefault();
-                  this.classList.toggle('active');
-                }
-              "
             >
               <span
                 class="material-symbols-outlined text-primary-container text-4xl mb-6"
@@ -312,16 +272,9 @@
             </div>
             <!-- Funcion 3: Estadisticas -->
             <div
-              class="feature-card md:col-span-5 bg-surface-container-highest rounded-lg p-10 flex flex-col justify-center border border-outline-variant/10"
+              class="feature-card glass-card md:col-span-5 rounded-lg p-10 flex flex-col justify-center border border-outline-variant/10 reveal fade-in fade-in-delay-2"
               tabindex="0"
               role="button"
-              onclick="this.classList.toggle('active')"
-              onkeydown="
-                if (event.key === 'Enter' || event.key === ' ') {
-                  event.preventDefault();
-                  this.classList.toggle('active');
-                }
-              "
             >
               <span
                 class="material-symbols-outlined text-primary-container text-4xl mb-6"
@@ -337,16 +290,9 @@
             </div>
             <!-- Funcion 4: Interfaz -->
             <div
-              class="feature-card md:col-span-7 glass-card rounded-lg p-10 flex items-center gap-8 border border-outline-variant/10 group"
+              class="feature-card md:col-span-7 glass-card rounded-lg p-10 flex items-center gap-8 border border-outline-variant/10 group reveal fade-in fade-in-delay-3"
               tabindex="0"
               role="button"
-              onclick="this.classList.toggle('active')"
-              onkeydown="
-                if (event.key === 'Enter' || event.key === ' ') {
-                  event.preventDefault();
-                  this.classList.toggle('active');
-                }
-              "
             >
               <div class="flex-1">
                 <span
@@ -362,14 +308,14 @@
                 </p>
               </div>
               <div
-                class="hidden sm:block w-32 h-32 bg-primary-container/20 rounded-full blur-2xl group-hover:bg-primary-container/40 transition-colors"
+                class="hidden sm:block w-32 h-32 bg-white/10 rounded-full blur-2xl border border-white/10 transition-colors"
               ></div>
             </div>
           </div>
         </div>
       </section>
       <!-- Maquetas de la app / destacados visuales -->
-      <section class="py-32 bg-surface-container-lowest px-6 overflow-hidden">
+      <section class="py-32 bg-surface px-6 overflow-hidden">
         <div class="max-w-7xl mx-auto">
           <div class="grid lg:grid-cols-2 gap-20 items-center">
             <div class="space-y-12">
@@ -429,31 +375,31 @@
               ></div>
               <div class="relative grid grid-cols-2 gap-8 items-center">
                 <div
-                  class="translate-y-16 glass-card p-4 rounded-3xl shadow-2xl"
+                  class="translate-y-16 glass-card p-4 rounded-3xl shadow-2xl fade-in"
                 >
                   <img
                     alt="Pantalla de estadisticas"
-                    class="rounded-2xl w-full"
+                    class="rounded-2xl w-full h-auto object-contain float-fast"
                     data-alt="Panel de visualizacion de datos en alta fidelidad en una tableta, mostrando analisis complejos de costo de transporte con graficos amarillos y blancos"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCe9EnolpmwNmtmO9rmG5Rx09nXXc_5V9Hxfl0upn5hxvfpVak61hkFWD2fzJBJ-sZr22TQQSg20CIFoA6Ybmbw3182E_t4tqrVuDeV0Huse52ScKU7hvIVrbLPevfYCgWp41TBUpBggXHZxMevREpUDaoEhK_4jv_LznkJO5YC2pZUVQ4pTgX3yYgWGBKvNvJGSNta1NLPkfdTYZTK8QzXnrxyo16KLeheJy8Ghm2ftSDBqEPKvyTb7xRkRS6VglAtGzKI22k2eWh1"
+                    src="assets/img/home.png"
                   />
                   <p
                     class="mt-6 text-center font-bold text-sm uppercase tracking-[0.2em] text-primary-fixed"
                   >
-                    Analitica Pro
+                    
                   </p>
                 </div>
-                <div class="glass-card p-4 rounded-3xl shadow-2xl">
+                <div class="glass-card p-4 rounded-3xl shadow-2xl fade-in">
                   <img
                     alt="Pantalla de total diario"
-                    class="rounded-2xl w-full"
+                    class="rounded-2xl w-full h-auto object-contain float-fast"
                     data-alt="Vista detallada de la app movil mostrando totales diarios de transporte con tipografia amarilla grande y elementos de interfaz luminosos"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbH0yr6izZXEPF8CtTvWlG8IJMCdRlvTctrqx1lrmyJ4OMOAAx1-s8qP8mXKOy81jhPdcKcI0-4iYrJVE6CA7eAtRzCBI5XCERDeKEGWETlT07mH8Uuehtr9RhHCJqp1XNtWAAg0y8y_PlGVtfyqRgu33PjGWuwk_4Ru9UPuO7dz6WlMOJ3m5bu8JuT2cYeVUGBznAqOxJ2iYo638bXblSmz3lnT964E0YLvX58PzUu4ytrv0P-TyqxWCCO7w37BfImo0u0KBgwmIC"
+                    src="assets/img/estadistica.png"
                   />
                   <p
                     class="mt-6 text-center font-bold text-sm uppercase tracking-[0.2em] text-primary-fixed"
                   >
-                    Vista Inteligente
+                    
                   </p>
                 </div>
               </div>
@@ -528,7 +474,7 @@
       </section>
       <!-- Testimonios -->
       <section
-        class="py-32 bg-surface-container-lowest px-6 overflow-hidden"
+        class="py-32 bg-surface px-6 overflow-hidden"
         id="testimonials"
       >
         <div class="max-w-7xl mx-auto">
@@ -571,73 +517,63 @@
           <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Testimonio 1 -->
             <div
-              class="testimonial-card glass-card p-10 rounded-3xl flex flex-col justify-between reveal"
+              class="testimonial-card glass-card p-10 rounded-3xl flex flex-col justify-between reveal fade-in scale-in"
               tabindex="0"
             >
               <p class="text-lg italic text-on-surface mb-8 leading-relaxed">
-                "Como estudiante, cada peso cuenta. PasajeTrak me ayudó a darme
-                cuenta que gastaba demasiado en taxis tarde en la noche. Ahora
-                planifico mejor mis rutas."
+                "Permite presupuestar y tiene buena velocidad de carga. La mejor herramienta para controlar mis gastos."
               </p>
               <div class="flex items-center gap-4">
                 <img
-                  alt="Andrés"
+                  alt="Joaquín"
                   class="w-14 h-14 rounded-full object-cover border-2 border-primary-container/20"
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpP3wwGgyl0Bq_bXqBzgrWSE2BWAMIiWh9B48xhSyZM7V61s7VLQ7DAjyS0hJ5VY5tO3lHmx1gaUEtZ-vMIDXKijLNq7L0bfsM_Z2CRVLh1bJqkXDsNWh2QEg8XYHJ9u_8mfzHJuuO65tSu3nJSCP6ID9vTKRAvKdlOREATNIc01vTyhrJOwjJmgr7rNHABi5QMN2atxsUKugP--3HYI6UT8ztj_uawRm_gnKKYw0kXn36w2nD2XK9Y6FzHgpHT027WDSa-zfI1Xev"
                 />
                 <div>
-                  <h4 class="font-bold">Andrés Rivera</h4>
+                  <h4 class="font-bold">Joaquín Cuentas Peña</h4>
                   <p class="text-xs text-secondary uppercase tracking-widest">
-                    Estudiante de Ingeniería
                   </p>
                 </div>
               </div>
             </div>
             <!-- Testimonio 2 -->
             <div
-              class="testimonial-card bg-surface-container-high p-10 rounded-3xl flex flex-col justify-between border border-outline-variant/5 reveal"
-              style="animation-delay: 0.1s"
+              class="testimonial-card bg-surface-container-high p-10 rounded-3xl flex flex-col justify-between border border-outline-variant/5 reveal fade-in scale-in"
               tabindex="0"
             >
               <p class="text-lg italic text-on-surface mb-8 leading-relaxed">
-                "La interfaz es simplemente hermosa. Me encanta ver el gráfico
-                al final de la semana y ver cómo mi presupuesto se mantiene bajo
-                control."
+                "Reduzco mis gastos de pasaje cada mes. Tiene un buen diseño y es muy fácil de usar."
               </p>
               <div class="flex items-center gap-4">
                 <img
-                  alt="Carla"
+                  alt="María"
                   class="w-14 h-14 rounded-full object-cover border-2 border-primary-container/20"
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeiw8hE6W5gCZBOiNm6jmgggFI758ZbeYNafnvdzfWP7fAIdmDjKhd3yXvthaHPkRLDSMMI9Qu7pu7Cx-jY--b2r9da2b0dH1036t9_FuyGXVcyRm57Ne0g1e0DlsElSPpIvIxEd_PPNo62o3RAEIM766oBSuqStTPZsnKSgVkE0c8viDbIySvP6XyyB_ZlSp7OQjobkup71acRV-NcB_fjQyN5SSlSnxuoxAvGyNYUmlDCp2CRDlgslMbBV922RYLjEij2IPFC31T"
                 />
                 <div>
-                  <h4 class="font-bold">Carla Montes</h4>
+                  <h4 class="font-bold">María Galdoz Calderón</h4>
                   <p class="text-xs text-secondary uppercase tracking-widest">
-                    Diseñadora Gráfica
                   </p>
                 </div>
               </div>
             </div>
             <!-- Testimonio 3 -->
             <div
-              class="testimonial-card glass-card p-10 rounded-3xl flex flex-col justify-between reveal"
-              style="animation-delay: 0.2s"
-              tabindex="0"
-            >
+              class="testimonial-card glass-card p-10 rounded-3xl flex flex-col justify-between reveal fade-in scale-in"
+              style="animation: testimonial-bounce 0.75s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards; animation-delay: 0.2s;"
+              
               <p class="text-lg italic text-on-surface mb-8 leading-relaxed">
-                "Súper fácil de usar. Literalmente registro mi pasaje mientras
-                paso la tarjeta por el lector. No quita nada de tiempo."
+                "No sabía cuánto gastaba en pasajes hasta que empecé a usar PasajeTrak. Ahora puedo verlo todo en un gráfico al final del mes. Muy útil."
               </p>
               <div class="flex items-center gap-4">
                 <img
-                  alt="Marco"
+                  alt="David"
                   class="w-14 h-14 rounded-full object-cover border-2 border-primary-container/20"
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzTrx1rJmHEnimAmj5wXom9MOpZt03LONKWeq5izd-I5w3UbfeRTq1AZ8HDoB-mZsJsX5oCDwoZVThHUWZK9eZzrQawCAUOk0RgDqA2DgFjNaNgqarlp76RfKcxHQuiptJIBfGdbLAA8lO2i44YhUfEEnSfj77ita5K4EVXFroCD38HsQsbNfa-1E1qwKmMwZ84TcIaS3XhNr7JE22U58Yv2c_hWfPyg9zZ7BPCO_q9HBTXyI6a42zTS5PdtMmWmlZDI7Fje_VjFrW"
                 />
                 <div>
-                  <h4 class="font-bold">Marco Polo</h4>
+                  <h4 class="font-bold">David Manuel Torres</h4>
                   <p class="text-xs text-secondary uppercase tracking-widest">
-                    Analista de Datos
                   </p>
                 </div>
               </div>
@@ -646,7 +582,7 @@
         </div>
       </section>
       <!-- Seccion de privacidad -->
-      <section class="py-32 bg-surface-container-low px-6" id="privacy">
+      <section class="py-32 bg-surface px-6" id="privacy">
         <div class="max-w-6xl mx-auto">
           <div class="text-center mb-16 reveal">
             <span
@@ -774,7 +710,7 @@
           </div>
 
           <div class="grid md:grid-cols-2 gap-6">
-            <article class="glass-card rounded-3xl p-8 reveal">
+            <article class="glass-card privacy-card rounded-3xl p-8 reveal">
               <div
                 class="w-12 h-12 rounded-full bg-primary-container/15 flex items-center justify-center mb-5"
               >
@@ -793,7 +729,7 @@
             </article>
 
             <article
-              class="glass-card rounded-3xl p-8 reveal"
+              class="glass-card privacy-card rounded-3xl p-8 reveal"
               style="animation-delay: 0.1s"
             >
               <div
@@ -814,7 +750,7 @@
             </article>
 
             <article
-              class="glass-card rounded-3xl p-8 reveal"
+              class="glass-card privacy-card rounded-3xl p-8 reveal"
               style="animation-delay: 0.2s"
             >
               <div
@@ -835,7 +771,7 @@
             </article>
 
             <article
-              class="glass-card rounded-3xl p-8 reveal"
+              class="glass-card privacy-card rounded-3xl p-8 reveal"
               style="animation-delay: 0.3s"
             >
               <div
@@ -858,7 +794,7 @@
         </div>
       </section>
       <!-- Llamado a la accion final -->
-      <section class="py-32 px-6">
+      <section class="py-32 bg-surface px-6">
         <div
           class="max-w-6xl mx-auto kinetic-gradient rounded-[3rem] p-16 md:p-24 text-center relative overflow-hidden shadow-[0_40px_100px_rgba(255,215,0,0.2)] group reveal"
         >
