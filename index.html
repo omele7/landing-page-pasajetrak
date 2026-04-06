@@ -28,7 +28,7 @@
           <img
             src="assets/img/pasajetraklog.png"
             alt="Logo de PasajeTrak"
-            class="h-10 w-auto"
+            class="h-10 w-auto no-anim"
           />
           <span
             class="text-2xl font-bold tracking-tighter text-yellow-400 font-plus-jakarta"
@@ -176,71 +176,20 @@
                   PasajeTrak nace de la necesidad de entender a dónde se va nuestro dinero cada vez que subimos a un bus, metro o taxi. Diseñada específicamente para quienes se desplazan por la ciudad, nuestra plataforma ofrece una forma ultra-rápida de registrar gastos sin complicaciones.
                 </p>
               </div>
-              <div class="relative flex justify-center items-center h-[560px]">
-                <div class="absolute inset-0 flex justify-center items-center pointer-events-none">
-                  <div class="mockup-background"></div>
-                </div>
-                <div class="relative w-full max-w-[320px] hero-drift">
-                  <div class="absolute top-0 right-0 w-[260px] h-[520px] device-mockup floating-device floating-device-1 float" style="opacity: 0.78;">
-                    <div class="device-screen">
-                      <img alt="Pantalla historial" class="w-full h-full object-contain fade-in" src="assets/img/home.png" />
-                    </div>
-                  </div>
-                  <div class="relative device-mockup floating-device floating-device-2 float-slow">
-                    <div class="device-screen">
-                      <img alt="Pantalla nuevo pasaje" class="w-full h-full object-contain fade-in" src="assets/img/edita.png" />
-                    </div>
-                  </div>
+              <div class="relative flex justify-end items-center min-h-[420px] lg:min-h-[520px]">
+                <div class="relative w-[420px] h-[500px]">
+                  <img
+                    alt="Mockup PasajeTrak trasero"
+                    class="hero-phone-img absolute z-20 top-[70px] left-[-40px] h-[390px] w-auto object-contain"
+                    src="assets/img/ptPsjnf.png"
+                  />
+                  <img
+                    alt="Mockup PasajeTrak frontal"
+                    class="hero-phone-img absolute z-10 top-[70px] left-[200px] h-[390px] w-auto object-contain opacity-75"
+                    src="assets/img/psHomenf.png"
+                  />
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- Seccion acerca de -->
-      <section class="py-32 bg-surface px-6">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-          <div class="order-2 md:order-1 relative group reveal">
-            <div
-              class="absolute -inset-4 bg-primary-container/10 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-            ></div>
-            <div class="image-frame relative mx-auto overflow-hidden rounded-[2rem] border border-white/15 bg-white/5 shadow-[0_30px_80px_rgba(0,0,0,0.22)] transition-all duration-500 group-hover:-translate-y-1">
-              <img
-                alt="Pasajeros en movimiento"
-                class="relative rounded-[1.75rem] w-full h-[500px] object-contain transition-all duration-500 float-slow fade-in"
-                data-alt="Toma cinematografica de larga exposicion de pasajeros en una estacion de buses de arquitectura moderna, con acentos amarillos en las luces"
-                src="assets/img/pasajetrakinicio.png"
-              />
-            </div>
-          </div>
-          <div
-            class="order-1 md:order-2 space-y-8 reveal"
-            style="animation-delay: 0.1s"
-          >
-            <h2
-              class="text-4xl md:text-5xl font-plus-jakarta font-bold tracking-tight text-on-surface"
-            >
-              Tu compañero de ruta diario.
-            </h2>
-            <p class="text-secondary text-lg leading-relaxed">
-              PasajeTrak nace de la necesidad de entender a dónde se va nuestro
-              dinero cada vez que subimos a un bus, metro o taxi. Diseñada
-              específicamente para quienes se desplazan por la ciudad, nuestra
-              plataforma ofrece una forma ultra-rápida de registrar gastos sin
-              complicaciones.
-            </p>
-            <div
-              class="flex items-center gap-4 text-primary-fixed bg-surface-container-high w-fit px-6 py-3 rounded-full border border-primary-container/10"
-            >
-              <span
-                class="material-symbols-outlined"
-                style="font-variation-settings: &quot;FILL&quot; 1"
-                >security</span
-              >
-              <span
-                class="font-plus-jakarta font-semibold uppercase tracking-wider text-xs"
-                >Precisión Garantizada</span
-              >
             </div>
           </div>
         </div>
@@ -284,7 +233,7 @@
             </div>
             <!-- Funcion 2: Historial -->
             <div
-              class="feature-card glass-card md:col-span-5 rounded-lg p-10 flex flex-col justify-between self-start min-h-[320px] border border-outline-variant/10 reveal fade-in fade-in-delay-1"
+              class="feature-card glass-card md:col-span-5 rounded-lg p-10 flex flex-col justify-start gap-2 border border-outline-variant/10 reveal fade-in fade-in-delay-1"
               tabindex="0"
               role="button"
             >
@@ -403,35 +352,17 @@
               <div
                 class="absolute inset-0 bg-primary-container/5 blur-[150px] rounded-full"
               ></div>
-              <div class="relative grid grid-cols-2 gap-8 items-center">
-                <div
-                  class="translate-y-16 glass-card p-4 rounded-3xl shadow-2xl fade-in"
-                >
-                  <img
-                    alt="Pantalla de estadisticas"
-                    class="rounded-2xl w-full h-auto object-contain float-fast"
-                    data-alt="Panel de visualizacion de datos en alta fidelidad en una tableta, mostrando analisis complejos de costo de transporte con graficos amarillos y blancos"
-                    src="assets/img/home.png"
-                  />
-                  <p
-                    class="mt-6 text-center font-bold text-sm uppercase tracking-[0.2em] text-primary-fixed"
-                  >
-                    
-                  </p>
-                </div>
-                <div class="glass-card p-4 rounded-3xl shadow-2xl fade-in">
-                  <img
-                    alt="Pantalla de total diario"
-                    class="rounded-2xl w-full h-auto object-contain float-fast"
-                    data-alt="Vista detallada de la app movil mostrando totales diarios de transporte con tipografia amarilla grande y elementos de interfaz luminosos"
-                    src="assets/img/estadistica.png"
-                  />
-                  <p
-                    class="mt-6 text-center font-bold text-sm uppercase tracking-[0.2em] text-primary-fixed"
-                  >
-                    
-                  </p>
-                </div>
+              <div class="relative w-full max-w-[540px] ml-auto mr-15 flex items-center justify-end gap-4">
+                <img
+                  alt="Pantalla de historial"
+                  class="hero-phone-img h-[400px] w-auto object-contain opacity-90"
+                  src="assets/img/psHistnf.png"
+                />
+                <img
+                  alt="Pantalla de estadisticas"
+                  class="hero-phone-img h-[460px] w-auto object-contain"
+                  src="assets/img/ptEstnf.png"
+                />
               </div>
             </div>
           </div>
@@ -448,7 +379,7 @@
           <div class="grid md:grid-cols-3 gap-12">
             <div class="space-y-6 reveal" style="animation-delay: 0.1s">
               <div
-                class="text-primary-container text-6xl font-black opacity-20"
+                class="text-primary-container text-6xl font-black opacity-65"
               >
                 01
               </div>
@@ -460,7 +391,7 @@
             </div>
             <div class="space-y-6 reveal" style="animation-delay: 0.2s">
               <div
-                class="text-primary-container text-6xl font-black opacity-20"
+                class="text-primary-container text-6xl font-black opacity-65"
               >
                 02
               </div>
@@ -472,7 +403,7 @@
             </div>
             <div class="space-y-6 reveal" style="animation-delay: 0.3s">
               <div
-                class="text-primary-container text-6xl font-black opacity-20"
+                class="text-primary-container text-6xl font-black opacity-65"
               >
                 03
               </div>
@@ -868,7 +799,7 @@
             <img
               src="assets/img/pasajetraklog.png"
               alt="Logo de PasajeTrak"
-              class="h-8 w-auto"
+              class="h-8 w-auto no-anim"
             />
             <div class="text-2xl font-black text-neutral-100 font-plus-jakarta">
               PasajeTrak
