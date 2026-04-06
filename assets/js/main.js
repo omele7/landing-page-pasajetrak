@@ -2,19 +2,33 @@
 const menuToggle = document.getElementById("menu-toggle");
 const mobileMenu = document.getElementById("mobile-menu");
 
-menuToggle.addEventListener("click", () => {
-  mobileMenu.classList.toggle("open");
-  const icon = menuToggle.querySelector(".material-symbols-outlined");
-  icon.textContent = mobileMenu.classList.contains("open") ? "close" : "menu";
-});
-
-// Cerrar menu al hacer clic en un enlace
-mobileMenu.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => {
-    mobileMenu.classList.remove("open");
-    menuToggle.querySelector(".material-symbols-outlined").textContent = "menu";
+if (menuToggle && mobileMenu) {
+  menuToggle.addEventListener("click", () => {
+    mobileMenu.classList.toggle("open");
+    const icon = menuToggle.querySelector(".material-symbols-outlined");
+    icon.textContent = mobileMenu.classList.contains("open") ? "close" : "menu";
   });
-});
+
+  // Cerrar menu al hacer clic en un enlace
+  mobileMenu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      mobileMenu.classList.remove("open");
+      menuToggle.querySelector(".material-symbols-outlined").textContent = "menu";
+    });
+  });
+
+  // Cerrar menu si hace clic fuera del navbar
+  document.addEventListener("click", (e) => {
+    if (
+      !mobileMenu.contains(e.target) &&
+      !menuToggle.contains(e.target) &&
+      mobileMenu.classList.contains("open")
+    ) {
+      mobileMenu.classList.remove("open");
+      menuToggle.querySelector(".material-symbols-outlined").textContent = "menu";
+    }
+  });
+}
 
 // ===== ANIMACIONES DE APARICION Y MOVIMIENTO =====
 
