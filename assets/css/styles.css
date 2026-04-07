@@ -527,13 +527,31 @@ body {
   max-height: 12rem;
 }
 
+@media (max-width: 767px) {
+  #features .feature-card .description {
+    max-height: none;
+    overflow: visible;
+  }
+}
+
 /* Estilos generales para botones con brillo */
 button {
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-button:active {
+button:not(#menu-toggle):active {
   box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+}
+
+#menu-toggle {
+  -webkit-tap-highlight-color: transparent;
+}
+
+#menu-toggle:active,
+#menu-toggle:focus,
+#menu-toggle:focus-visible {
+  box-shadow: none !important;
+  outline: none;
 }
 
 /* Animación fluida para todos los elementos interactivos */
