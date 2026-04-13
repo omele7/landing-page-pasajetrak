@@ -159,39 +159,45 @@ body {
 
 /* Reducir intensidad del brillo amarillo en la sección de Funciones */
 #features .feature-card::before {
-  background: radial-gradient(
-    circle at center,
-    rgba(255, 215, 0, 0.05) 0%,
-    transparent 70%
-  );
+  display: none;
 }
 
 #features .feature-card:hover::before,
 #features .feature-card:focus-visible::before {
-  opacity: 0.55;
+  opacity: 0;
+}
+
+#features .feature-card {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease;
 }
 
 #features .feature-card:hover,
 #features .feature-card:focus-visible {
-  box-shadow: 0 18px 46px rgba(255, 215, 0, 0.13);
-  border-color: rgba(255, 223, 0, 0.34);
-  background: rgba(255, 255, 255, 0.07);
-  filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.14));
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+  border-color: rgba(255, 223, 0, 0.22);
+  background: rgba(255, 255, 255, 0.045);
+  filter: none;
 }
 
 #features .feature-card:active {
-  box-shadow:
-    0 0 26px rgba(255, 215, 0, 0.24),
-    0 18px 46px rgba(255, 215, 0, 0.16);
-  border-color: rgba(255, 223, 0, 0.5);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 223, 0, 0.3);
 }
 
 #features .feature-card.active {
-  box-shadow:
-    0 0 28px rgba(255, 215, 0, 0.26),
-    0 18px 44px rgba(255, 215, 0, 0.18);
-  border-color: rgba(255, 223, 0, 0.55);
-  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 223, 0, 0.34);
+  background: rgba(255, 255, 255, 0.05);
+  filter: none;
 }
 
 .feature-card,
@@ -298,7 +304,9 @@ body {
 
 #testimonials .testimonial-card,
 #privacy .privacy-card,
-#terms .terms-card {
+#terms .terms-card,
+#privacy .glass-card,
+#terms .glass-card {
   background: rgba(22, 24, 34, 0.98) !important;
   border-color: rgba(145, 145, 155, 0.18) !important;
   box-shadow: 0 30px 70px rgba(0, 0, 0, 0.28);
@@ -698,22 +706,22 @@ button:not(#menu-toggle):active {
 
 /* Animación alternativa para funciones - más dinámicas */
 #features .feature-card.fade-in.in-view:nth-child(1) {
-  animation: fadeInUp 1.8s ease-out forwards !important;
+  animation: fadeInUp 0.85s ease-out forwards !important;
 }
 
 #features .feature-card.fade-in.in-view:nth-child(2) {
-  animation: fadeInLeft 1.8s ease-out forwards !important;
-  animation-delay: 0.2s !important;
+  animation: fadeInLeft 0.85s ease-out forwards !important;
+  animation-delay: 0.1s !important;
 }
 
 #features .feature-card.fade-in.in-view:nth-child(3) {
-  animation: fadeInRight 1.8s ease-out forwards !important;
-  animation-delay: 0.2s !important;
+  animation: fadeInRight 0.85s ease-out forwards !important;
+  animation-delay: 0.1s !important;
 }
 
 #features .feature-card.fade-in.in-view:nth-child(4) {
-  animation: fadeInUp 1.8s ease-out forwards !important;
-  animation-delay: 0.4s !important;
+  animation: fadeInUp 0.85s ease-out forwards !important;
+  animation-delay: 0.2s !important;
 }
 
 /* Efecto de brillo sutil durante la entrada */
@@ -836,4 +844,73 @@ button:not(#menu-toggle):active {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+/* Optimizacion final de glow para cards en dispositivos de gama baja */
+:root {
+  --card-glow-soft: rgba(255, 215, 0, 0.12);
+  --card-glow-border: rgba(255, 223, 0, 0.24);
+}
+
+#features .feature-card,
+#testimonials .testimonial-card,
+#privacy .privacy-card,
+#terms .terms-card,
+#privacy .glass-card,
+#terms .glass-card {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  will-change: transform;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease,
+    background-color 0.18s ease;
+}
+
+#features .feature-card::before,
+#testimonials .testimonial-card::before {
+  display: none;
+}
+
+#features .feature-card:hover,
+#features .feature-card:focus-visible,
+#testimonials .testimonial-card:hover,
+#testimonials .testimonial-card:focus-visible,
+#privacy .privacy-card:hover,
+#privacy .privacy-card:focus-visible,
+#privacy .glass-card:hover,
+#privacy .glass-card:focus-visible,
+#terms .terms-card:hover,
+#terms .terms-card:focus-visible,
+#terms .glass-card:hover,
+#terms .glass-card:focus-visible {
+  transform: translateY(-4px) scale(1.01);
+  border-color: var(--card-glow-border) !important;
+  background: rgba(255, 255, 255, 0.055);
+  box-shadow:
+    0 10px 22px rgba(0, 0, 0, 0.22),
+    0 0 10px var(--card-glow-soft);
+  filter: none !important;
+}
+
+#features .feature-card:active,
+#features .feature-card.active,
+#testimonials .testimonial-card:active,
+#testimonials .testimonial-card.active,
+#privacy .privacy-card:active,
+#privacy .glass-card:active,
+#terms .terms-card:active,
+#terms .glass-card:active {
+  transform: translateY(-1px) scale(1.005);
+  border-color: rgba(255, 223, 0, 0.28) !important;
+  box-shadow:
+    0 8px 18px rgba(0, 0, 0, 0.2),
+    0 0 8px rgba(255, 215, 0, 0.1);
+  filter: none !important;
+}
+
+#testimonials .testimonial-card:active::after {
+  display: none;
+  animation: none;
 }
