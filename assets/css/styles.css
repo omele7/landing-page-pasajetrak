@@ -523,16 +523,19 @@ body {
   transition: all 0.2s ease;
 }
 
-.feature-card .description,
 .testimonial-card .description {
   max-height: 4rem;
   overflow: hidden;
   transition: max-height 0.25s ease;
 }
 
-.feature-card.active .description,
 .testimonial-card.active .description {
   max-height: 12rem;
+}
+
+#features .feature-card .description {
+  max-height: none;
+  overflow: visible;
 }
 
 @media (max-width: 767px) {
