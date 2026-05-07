@@ -5,6 +5,34 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>PasajeTrak - Controla tus gastos de pasaje</title>
+    <meta
+      name="description"
+      content="PasajeTrak es la app para controlar tus gastos de pasaje y gastos diarios. Registra viajes, analiza estadisticas y ahorra en transporte."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://pasajetrak.netlify.app/" />
+    <meta property="og:title" content="PasajeTrak - Controla tus gastos de pasaje" />
+    <meta
+      property="og:description"
+      content="Registra pasajes y gastos diarios en segundos. Visualiza estadisticas claras y toma mejores decisiones financieras con PasajeTrak."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://pasajetrak.netlify.app/" />
+    <meta
+      property="og:image"
+      content="https://pasajetrak.netlify.app/assets/img/pasajetraklog.png"
+    />
+    <meta property="og:locale" content="es_PE" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="PasajeTrak - Controla tus gastos de pasaje" />
+    <meta
+      name="twitter:description"
+      content="Registra pasajes y gastos diarios en segundos. Visualiza estadisticas claras y toma mejores decisiones financieras con PasajeTrak."
+    />
+    <meta
+      name="twitter:image"
+      content="https://pasajetrak.netlify.app/assets/img/pasajetraklog.png"
+    />
     <link rel="icon" type="image/png" href="assets/img/pasajetraklog.png" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
@@ -17,6 +45,22 @@
     />
     <script src="assets/js/tailwind-config.js"></script>
     <link href="assets/css/styles.css" rel="stylesheet" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "PasajeTrak",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Android",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "PEN"
+        },
+        "url": "https://pasajetrak.netlify.app/",
+        "downloadUrl": "https://play.google.com/store/apps/details?id=pe.edu.upc.pasajetrak.app&pcampaignid=web_share"
+      }
+    </script>
   </head>
   <body class="selection:bg-primary-container selection:text-on-primary">
     <!-- Barra de navegacion superior -->
@@ -59,11 +103,14 @@
           >
         </div>
         <div class="flex items-center gap-4">
-          <button
+          <a
             class="hidden sm:block bg-primary-container text-on-primary px-6 py-2 rounded-full font-plus-jakarta text-sm font-bold active:scale-95 transition-transform shadow-[0_0_15px_rgba(255,215,0,0.2)]"
+            href="https://play.google.com/store/apps/details?id=pe.edu.upc.pasajetrak.app&pcampaignid=web_share"
+            target="_blank"
+            rel="noreferrer"
           >
             Descargar
-          </button>
+          </a>
           <button class="md:hidden text-white p-1" id="menu-toggle">
             <span class="material-symbols-outlined text-3xl">menu</span>
           </button>
@@ -769,12 +816,15 @@
               ¿Listo para tomar el control?
             </h2>
             <div class="flex flex-wrap justify-center gap-6">
-              <button
+              <a
                 class="bg-on-primary text-primary-container px-12 py-6 rounded-full font-bold text-lg sm:text-xl hover:scale-105 transition-transform flex items-center gap-3 shadow-2xl"
+                href="https://play.google.com/store/apps/details?id=pe.edu.upc.pasajetrak.app&pcampaignid=web_share"
+                target="_blank"
+                rel="noreferrer"
               >
                 <span class="material-symbols-outlined text-2xl">download</span>
                 Descarga PasajeTrak ahora
-              </button>
+              </a>
             </div>
           </div>
         </div>
